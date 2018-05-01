@@ -1,26 +1,28 @@
 <template>
   <div>
     <smallmenu v-bind:smallMenu="smallMenu" />
-    <searchpage v-if="searchPhrase" />
-    <div class="container grey" style="min-height: 90vh" v-else>
-      <div class="wrapper-narrow-article">      
-          <transition name="fade">
-            <article  class="blog-article" >
-              <div class="article-date">{{toTwoDigits(Blogpost.postDay)}}.{{toTwoDigits(Blogpost.postMonth)}}.{{Blogpost.postYear}}</div>
-              <div class="article-title">
-                  {{Blogpost.title}}
-              </div>
-              <div class="article-text" v-html="Blogpost.articleHtml">
-              </div>
-              <div class="bottom-elements">
-                <div class="dividing-dots">...</div>
-                <div class="share-on-facebook">Spodobał Ci się ten post? <span class="smile">😊</span><a v-bind:href="'https://www.facebook.com/sharer/sharer.php?u=dziecimamy.com/'+routeParam" target="_blank"><span class="fb-share"> Udostępnij go na Facebooku!</span></a></div>
-              </div>          
-            </article>
-          </transition>
-          <transition name="fade">
-            <moreposts v-bind:postId="Blogpost.id" v-bind:id="Blogpost.category.id"></moreposts>
-          </transition>
+    <div v-bind:class="{fadeout: switchPost}">
+      <searchpage v-if="searchPhrase" />
+      <div class="container grey" style="min-height: 90vh" v-else>
+        <div class="wrapper-narrow-article">      
+            <transition name="fade">
+              <article  class="blog-article" v-show="loaded">
+                <div class="article-date">{{toTwoDigits(Blogpost.postDay)}}.{{toTwoDigits(Blogpost.postMonth)}}.{{Blogpost.postYear}}</div>
+                <div class="article-title">
+                    {{Blogpost.title}}
+                </div>
+                <div class="article-text" v-html="Blogpost.articleHtml">
+                </div>
+                <div class="bottom-elements">
+                  <div class="dividing-dots">...</div>
+                  <div class="share-on-facebook">Spodobał Ci się ten post? <span class="smile">😊</span><a v-bind:href="'https://www.facebook.com/sharer/sharer.php?u=dziecimamy.com/'+routeParam" target="_blank"><span class="fb-share"> Udostępnij go na Facebooku!</span></a></div>
+                </div>          
+              </article>
+            </transition>
+            <transition name="fade">
+              <moreposts  v-on:switchPost="switchPost = true" v-bind:postId="Blogpost.id" v-bind:id="Blogpost.category.id"></moreposts>
+            </transition>
+        </div>
       </div>
     </div>
   </div>
@@ -35,10 +37,10 @@ import smallmenu from '@/components/smallmenu.vue'
 export default {
   head () {
     return {
-      'og:title': this.Blogpost.title,
-      'og:url': `http://www.dziecimamy.com/${this.$route.params.slug}`,
-      'og:image': this.Blogpost.thumbnail,
-      'og:description': this.Blogpost.snippet
+      // 'og:title': this.Blogpost.title,
+      // 'og:url': `http://www.dziecimamy.com/${this.$route.params.slug}`,
+      // 'og:image': this.Blogpost.thumbnail,
+      // 'og:description': this.Blogpost.snippet
     }
   },
   data () {
@@ -47,7 +49,9 @@ export default {
       Blogpost: {},
       show: false,
       fadein: false,
-      smallMenu: true
+      smallMenu: true,
+      loaded: false,
+      switchPost: false
     }
   },
   components: {
@@ -97,22 +101,23 @@ export default {
   },
   mounted(){
   this.sendCatId();
+  this.loaded = true;
   }
 }
 </script>
 
 <style>
 .fade-enter-active, .fade-leave-active {
-  transition: all ease-out 300ms;
-  transition-delay: 10ms;
+  transition: all ease-out 400ms;
 }
 .fade-enter, .fade-leave-to{
   opacity: 0;
   transform: translateY(10px);
 }
-.fadein{
-  opacity: 1 !important;
-  transform: translateY(0px) !important;
+
+.fadeout{
+  opacity: 0;
+  transition: 100ms opacity;
 }
 
 .blog-article{

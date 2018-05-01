@@ -1,17 +1,19 @@
 <template>
 <div style="min-height: 90vh">
   <smallmenu v-bind:smallMenu="smallMenu" />
-  <searchpage v-if="searchPhrase" />
-  <div class="container grey" v-else>
-    <div class="wrapper-narrow">
-      <div class="category-name" v-bind:style="{color: categoryColor}">{{categoryName}}</div><br>
-      <div class="category-description">{{categoryDescription}}</div>
+  <div v-bind:class="{fadeout: !show}">
+    <searchpage v-if="searchPhrase" />
+    <div class="container grey" v-else>
+      <div class="wrapper-narrow">
+        <div class="category-name" v-bind:style="{color: categoryColor}">{{categoryName}}</div><br>
+        <div class="category-description">{{categoryDescription}}</div>
+      </div>
     </div>
-  </div>
-  <blogposts v-bind:allBlogposts="allBlogposts" v-bind:ispage="true"/>
-    <div class="container transparent">
-    <div class="wrapper-narrow">           
-      <router-link v-if="numberOfPosts > 10" rel="next" class="change-page right-button" v-bind:to="'/kategoria/'+ this.$route.params.slug +'/strona/2'">Starsze posty <font-awesome-icon style="transform: translateY(1px); font-size: 0.85em; margin-left: 5px;" :icon="['fas', 'arrow-right']"/></router-link>
+    <blogposts v-on:hidePosts="show = false" v-bind:allBlogposts="allBlogposts" v-bind:ispage="true"/>
+      <div class="container transparent">
+      <div class="wrapper-narrow">           
+        <router-link v-if="numberOfPosts > 10" rel="next" class="change-page right-button" v-bind:to="'/kategoria/'+ this.$route.params.slug +'/strona/2'">Starsze posty <font-awesome-icon style="transform: translateY(1px); font-size: 0.85em; margin-left: 5px;" :icon="['fas', 'arrow-right']"/></router-link>
+      </div>
     </div>
   </div>
 </div>
@@ -31,7 +33,8 @@ export default {
       allBlogposts: [],
       categoryName: '',
       categoryDescription: '',
-      numberOfPosts: 0
+      numberOfPosts: 0,
+      show: true
     }
   },
   components: {
@@ -75,6 +78,10 @@ export default {
 }
 </script>
 <style>
+.fadeout{
+  opacity: 0;
+  transition: 100ms opacity;
+}
 .category-name{
   margin-top: 100px;
   font-size: 2.4em;

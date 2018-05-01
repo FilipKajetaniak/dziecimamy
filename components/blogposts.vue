@@ -2,8 +2,7 @@
 <div class="container grey">
   <div class="wrapper-narrow">
   <div v-for="post in allBlogposts" :key="post.id" style="margin-bottom: 50px;">
-    <router-link v-bind:to="'/'+post.slug">
-      <div class="blog-post-big">
+      <div class="blog-post-big" @click="openPost(post.slug)">
         <div class="blog-post-big-image" v-bind:style="{backgroundImage: 'url(' + post.thumbnail + ')'}"></div>
         <div class="blog-post-big-text">
           <div class="blog-post-big-title" v-bind:style="{'color': post.category.color}">{{post.title}}
@@ -17,7 +16,6 @@
           <div class="blog-post-big-category" v-bind:style="{background: post.category.color}">{{post.category.name}}</div>
         </div>
       </div>
-    </router-link>
   </div>
   </div>
   </div>
@@ -40,6 +38,10 @@ export default {
     }
   },
   methods: {
+  openPost(slug){
+    this.$emit('hidePosts');
+    setTimeout(() => {this.$router.push(`/${slug}`)},100)
+  },
   turnDateToObject(day, month, year){
     let post = {
     d: day,

@@ -1,11 +1,13 @@
 <template>
 <div>
   <smallmenu v-bind:smallMenu="smallMenu"/>
-  <searchpage v-if="searchPhrase"/>
-  <div v-else style="padding-top: 100px">
-  <!-- <div class="space"></div> -->
-  <blogposts v-bind:allBlogposts="allBlogposts" v-bind:ispage="true"/> 
-  <postsnav v-bind:numberOfAllPosts="numberOfAllPosts" v-bind:categoryMode="false"/>
+  <div v-bind:class="{fadeout: !show}">
+    <searchpage v-if="searchPhrase"/>
+    <div v-else style="padding-top: 100px">
+    <!-- <div class="space"></div> -->
+    <blogposts v-on:hidePosts="show = false" v-bind:allBlogposts="allBlogposts" v-bind:ispage="true"/> 
+    <postsnav v-bind:numberOfAllPosts="numberOfAllPosts" v-bind:categoryMode="false"/>
+    </div>
   </div>
 </div>
 </template>
@@ -22,7 +24,8 @@ export default {
   data () {
     return {
       smallMenu: true,
-      Yoff: 0
+      Yoff: 0,
+      show: true
     }
   },
   components: {
@@ -64,5 +67,9 @@ export default {
 <style>
 .page-search{
   margin-top: 50px;
+}
+.fadeout{
+  opacity: 0;
+  transition: 100ms opacity;
 }
 </style>

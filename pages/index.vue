@@ -1,18 +1,20 @@
 <template>
 <div>
   <smallmenu v-bind:smallMenu="smallMenu" />
-  <searchpage v-if="searchPhrase"/>
-  <div v-else>
-  <blogheader v-bind:description="pageDescription" />
-  <blogposts v-bind:allBlogposts="allBlogposts.slice(0,5)" v-bind:ispage="false"/>
-  <newsletter v-show="allBlogposts.length > 4" style="margin-bottom: 50px !important;"/>
-  <blogposts v-bind:allBlogposts="allBlogposts.slice(5,10)" v-bind:ispage="true"/>
-  <div class="container transparent">
-    <div class="wrapper-narrow">           
-      <router-link v-if="numberOfAllPosts > 10" rel="next" class="change-page right-button" v-bind:to="'/strona/'+2">Starsze posty <font-awesome-icon style="transform: translateY(1px); font-size: 0.85em; margin-left: 5px;" :icon="['fas', 'arrow-right']"/></router-link>
+    <div v-bind:class="{fadeout: !show}">
+      <searchpage v-if="searchPhrase"/>
+      <div v-else>
+        <blogheader v-bind:description="pageDescription" />
+        <blogposts v-on:hidePosts="show = false" v-bind:allBlogposts="allBlogposts.slice(0,5)" v-bind:ispage="false"/>
+        <newsletter v-show="allBlogposts.length > 4" style="margin-bottom: 50px !important;"/>
+        <blogposts v-on:hidePosts="show = false" v-bind:allBlogposts="allBlogposts.slice(5,10)" v-bind:ispage="true"/>
+        <div class="container transparent">
+          <div class="wrapper-narrow">           
+            <router-link v-if="numberOfAllPosts > 10" rel="next" class="change-page right-button" v-bind:to="'/strona/'+2">Starsze posty <font-awesome-icon style="transform: translateY(1px); font-size: 0.85em; margin-left: 5px;" :icon="['fas', 'arrow-right']"/></router-link>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
 </div>
 </template>
 
@@ -31,7 +33,8 @@ export default {
     return {
       smallMenu: false,
       pageDescription: '',
-      Yoff: 0
+      Yoff: 0,
+      show: true
     }
   },
     asyncData(context) {
@@ -92,6 +95,10 @@ export default {
 </script>
 
 <style>
+.fadeout{
+  opacity: 0;
+  transition: 100ms opacity;
+}
 .right-button{
   margin-right: 0;
   margin-left: auto;

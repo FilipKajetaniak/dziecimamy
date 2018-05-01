@@ -1,21 +1,17 @@
 <template>
 <div class="more-posts" v-show="Category.posts.length || additionalCategory.length">Sprawdź też inne posty z kategorii <span class="category-color" v-bind:style="{'color': Category.color}">{{Category.name}}</span>:
     <div class="more-posts-grid">
-        <div class="more-posts-item" v-for="post in Category.posts" :key="post.id">
-            <router-link v-bind:to="'/'+post.slug">
+        <div class="more-posts-item" @click="openPost(post.slug)" v-for="post in Category.posts" :key="post.id">
                 <div class="more-posts-thumbnail">
                     <div class="more-posts-thumbnail-image" v-bind:style="{backgroundImage: 'url(' + post.thumbnail + ')'}"></div>
                     <div class="more-posts-title" v-bind:style="{'color': Category.color}">{{post.title}}</div>
-                </div> 
-            </router-link>       
+                </div>    
         </div>
-        <div class="more-posts-item" v-for="post in additionalCategory" :key="post.id">
-            <router-link v-bind:to="'/'+post.slug">
+        <div class="more-posts-item" @click="openPost(post.slug)" v-for="post in additionalCategory" :key="post.id">
                 <div class="more-posts-thumbnail">
                     <div class="more-posts-thumbnail-image" v-bind:style="{backgroundImage: 'url(' + post.thumbnail + ')'}"></div>
                     <div class="more-posts-title" v-bind:style="{'color': Category.color}">{{post.title}}</div>
-                </div> 
-            </router-link>       
+                </div>       
         </div>
     </div>
 </div>
@@ -52,6 +48,10 @@ export default {
     }
   },
   methods: {
+    openPost(slug){
+        this.$emit('switchPost');
+        setTimeout(() => {this.$router.push(`/${slug}`)},100)
+    },
       fetchEvenMorePosts(first){
           this.$apollo.query({              
                query: EVEN_MORE_POSTS,
