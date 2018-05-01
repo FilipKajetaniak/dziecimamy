@@ -5,14 +5,14 @@
     <div class="container grey" style="min-height: 90vh" v-else>
       <div class="wrapper-narrow-article">      
           <transition name="fade">
-            <article  v-bind:class="{'blog-article': true, 'fadein': !loading}" >
-              <div v-bind:class="{'article-date': true, 'fadein': !loading}">{{toTwoDigits(Blogpost.postDay)}}.{{toTwoDigits(Blogpost.postMonth)}}.{{Blogpost.postYear}}</div>
-              <div v-bind:class="{'article-title': true, 'fadein': !loading}">
+            <article  class="blog-article" >
+              <div class="article-date">{{toTwoDigits(Blogpost.postDay)}}.{{toTwoDigits(Blogpost.postMonth)}}.{{Blogpost.postYear}}</div>
+              <div class="article-title">
                   {{Blogpost.title}}
               </div>
-              <div v-bind:class="{'article-text': true, 'fadein': !loading}" v-html="Blogpost.articleHtml">
+              <div class="article-text" v-html="Blogpost.articleHtml">
               </div>
-              <div v-bind:class="{'bottom-elements': true, 'fadein': !loading}">
+              <div class="bottom-elements">
                 <div class="dividing-dots">...</div>
                 <div class="share-on-facebook">Spodobał Ci się ten post? <span class="smile">😊</span><a v-bind:href="'https://www.facebook.com/sharer/sharer.php?u=dziecimamy.com/'+routeParam" target="_blank"><span class="fb-share"> Udostępnij go na Facebooku!</span></a></div>
               </div>          
@@ -45,7 +45,6 @@ export default {
     return {
       routeParam: this.$route.params.slug,
       Blogpost: {},
-      loading: 0,
       show: false,
       fadein: false,
       smallMenu: true
@@ -128,17 +127,6 @@ export default {
   -webkit-box-shadow: 0px 4px 17px -5px rgba(179,179,179,0.48);
   -moz-box-shadow: 0px 4px 17px -5px rgba(179,179,179,0.48);
   box-shadow: 0px 4px 17px -5px rgba(179,179,179,0.48);
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all cubic-bezier(.3,.66,.56,1) 300ms;
-  transition-delay: 1ms; 
-}
-
-.bottom-elements{
-  opacity: 0;
-  transform: translateY(10px); 
-  transition: all cubic-bezier(.3,.66,.56,1) 300ms;
-  transition-delay: 450ms;
 }
 
 .article-title{
@@ -154,10 +142,6 @@ export default {
     clear: both;
     margin-top: 50px;
     margin-bottom: 50px;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all cubic-bezier(.3,.66,.56,1) 300ms;
-    transition-delay: 150ms;
 }
 .image-wrapper{
     width: 100%;
@@ -170,10 +154,6 @@ export default {
     font-size: 15px;
     font-weight: 800;
     float: left;
-    opacity: 0;
-    transform: translateY(10px); 
-    transition: all cubic-bezier(.3,.66,.56,1) 300ms;
-    transition-delay: 100ms;
 }
 
 
@@ -185,11 +165,6 @@ export default {
     position: relative;
     width: 100%;
     overflow: hidden;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all cubic-bezier(.3,.66,.56,1) 300ms;
-    transition-delay: 300ms;
-
 }
 
 .article-text > img {
@@ -224,35 +199,12 @@ export default {
     border-left: 5px solid #f8b724;
     font-size: 1.2em;
 }
-.svg-arrow{
-  display: inline;
-  transform: translateY(1.5px)
-}
-
 
 .blog-post-image{
     max-width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
-}
-
-.back-button{
-    font-family: Nunito;
-    color: #f26d5b;
-    font-size: 1.2em;
-    line-height: 1.7em;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.back-button:hover{
-  color: #492540;
-}
-
-.fa-arrow-left{
-  margin-right: 5px;
-  transform: translateY(0.5px);
 }
 
 .dividing-dots{
