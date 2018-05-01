@@ -1,0 +1,8 @@
+mutation UpdateAboutME($aboutMe: String!){
+  updatePageContent(
+    id: "cjfjxdvqjbayg01725pw1onbb"
+    aboutMe: $aboutMe
+  ) {
+    id
+  }
+}

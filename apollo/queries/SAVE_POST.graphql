@@ -1,0 +1,16 @@
+mutation CreateSavedpostMutation($title: String!, $articleHtml: String!, $snippet: String!,
+  $postDay: Int, $postMonth: Int, $postYear: Int, $thumbnail: String, $category: String!, $slug: String){
+  createSavedpost(
+    title: $title,
+    articleHtml: $articleHtml,
+    snippet: $snippet,
+    postDay: $postDay,
+    postMonth: $postMonth,
+    postYear: $postYear,
+    thumbnail: $thumbnail,
+    category: $category
+    slug: $slug
+  ){
+    id
+  }
+}

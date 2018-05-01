@@ -1,0 +1,8 @@
+query{
+  allSavedposts(orderBy: createdAt_DESC){
+  id
+  title
+  category
+  snippet
+  }
+}

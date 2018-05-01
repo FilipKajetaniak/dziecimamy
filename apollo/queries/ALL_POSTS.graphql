@@ -1,0 +1,19 @@
+query AllBlogposts($skip: Int){
+    allBlogposts(
+      first: 10
+      skip: $skip
+      orderBy: createdAt_DESC
+      ){
+        title
+        snippet
+        postDay
+        postMonth
+        postYear
+        thumbnail
+        slug
+        category{
+          color
+          name
+        }
+      }
+  }

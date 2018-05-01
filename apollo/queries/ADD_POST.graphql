@@ -1,0 +1,16 @@
+mutation CreateBlogpostMutation($title: String!, $articleHtml: String!, $snippet: String!,
+  $postDay: Int, $postMonth: Int, $postYear: Int, $thumbnail: String, $categoryId: ID!, $slug: String){
+  createBlogpost(
+    title: $title,
+    articleHtml: $articleHtml,
+    snippet: $snippet,
+    postDay: $postDay,
+    postMonth: $postMonth,
+    postYear: $postYear,
+    thumbnail: $thumbnail,
+    categoryId: $categoryId
+    slug: $slug
+  ){
+    id
+  }
+}

@@ -1,0 +1,11 @@
+query Search($search: String!){
+  allBlogposts(
+    filter: {
+    title_contains: $search
+  }
+  orderBy: createdAt_DESC
+  ){
+    title
+    slug
+  }
+}

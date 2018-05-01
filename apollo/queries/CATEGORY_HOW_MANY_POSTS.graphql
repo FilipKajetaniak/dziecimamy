@@ -1,0 +1,7 @@
+query HowManyPosts($id: ID!){
+  Category(id: $id){
+    _postsMeta{
+      count
+    }
+  }
+}

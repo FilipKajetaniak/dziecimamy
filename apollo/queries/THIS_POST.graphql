@@ -1,0 +1,16 @@
+query Blogpost($slug: String!){
+  Blogpost(slug: $slug){
+      id
+      title
+      articleHtml
+      postDay
+      postMonth
+      postYear
+      slug
+      snippet
+      thumbnail
+      category{
+        id
+      }
+    }
+  }

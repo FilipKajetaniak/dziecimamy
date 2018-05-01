@@ -1,0 +1,11 @@
+query GetCategory($slug: String!){
+    Category(slug: $slug){
+        id
+        name
+        color
+        description
+        posts {
+        id
+        }
+    }
+}

@@ -1,0 +1,6 @@
+query{
+    allBlogposts{
+        postMonth
+        postYear
+    }
+}

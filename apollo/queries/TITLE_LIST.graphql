@@ -1,0 +1,8 @@
+query AllBlogposts{
+    allBlogposts(
+      orderBy: createdAt_DESC
+      ){
+        title
+        slug
+      }
+  }

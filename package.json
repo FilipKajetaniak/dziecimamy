@@ -1,0 +1,43 @@
+{
+  "name": "dziecimamy",
+  "version": "1.0.0",
+  "description": "Blog o wychowaniu, pomoc dla rodziców, jak radzić sobie z trudnymi zachowaniami dzieci, nastolatków",
+  "author": "Ewa Kajetaniak",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node app.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.4",
+    "@fortawesome/fontawesome-free-brands": "^5.0.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.8",
+    "@fortawesome/vue-fontawesome": "0.0.22",
+    "@nuxtjs/apollo": "^3.0.5",
+    "@nuxtjs/font-awesome": "^1.0.3",
+    "apollo-link-http": "^1.5.3",
+    "apollo-link-ws": "^1.0.7",
+    "apollo-utilities": "^1.0.10",
+    "autoprefixer": "^8.4.1",
+    "es6-promise": "^4.2.4",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.8.0",
+    "isomorphic-fetch": "^2.2.1",
+    "js-cookie": "^2.2.0",
+    "npm": "^5.8.0",
+    "nuxt": "^1.0.0",
+    "postcss": "^6.0.22",
+    "postcss-hexrgba": "^1.0.1",
+    "postcss-nested": "^3.0.0",
+    "postcss-responsive-type": "^1.0.0",
+    "subscriptions-transport-ws": "^0.9.6",
+    "vue-lodash": "^2.0.0",
+    "vue-quill-editor": "^3.0.5",
+    "vue-scrollto": "^2.11.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.4"
+  }
+}

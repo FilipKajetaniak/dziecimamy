@@ -1,0 +1,12 @@
+query PostsByYear($year: Int!){
+  allBlogposts(
+    filter: {
+      postYear: $year
+    }
+    orderBy: createdAt_DESC
+  ){
+	postMonth
+    title
+    slug
+  }
+}

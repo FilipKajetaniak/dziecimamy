@@ -1,0 +1,10 @@
+mutation AddCategory($name: String!, $slug: String!, $color: String!, $description: String, $postsIds: [ID!]){
+    createCategory(
+    name: $name
+    slug: $slug
+    color: $color
+    description: $description
+    postsIds: $postsIds){
+        id
+    }
+}

@@ -1,0 +1,7 @@
+query{
+  allBlogposts(orderBy: createdAt_DESC){
+  id
+  title
+  snippet
+  }
+}

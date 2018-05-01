@@ -1,0 +1,27 @@
+query PostsByCategory($slug: String!, $skip: Int){
+  Category(slug: $slug){
+    name
+    description
+    color
+    _postsMeta{
+      count
+    }
+    posts(
+      first: 10
+      skip: $skip
+      orderBy: createdAt_DESC){
+      title
+      slug
+      snippet
+      thumbnail
+      createdAt
+      postDay
+      postMonth
+      postYear
+      category {
+        name
+        color
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+query Savedpost($id: ID!){
+  Savedpost(id: $id){
+    title
+    articleHtml
+    category
+    snippet
+    thumbnail
+    postDay
+    postMonth
+    postYear
+    }
+  }

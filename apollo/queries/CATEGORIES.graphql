@@ -1,0 +1,8 @@
+query {
+  allCategories{
+    id
+    slug
+    name
+    color
+  }
+}

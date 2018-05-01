@@ -1,0 +1,20 @@
+query Category($id: ID!, $postId: String){
+  Category(id: $id){
+    id
+    name
+    color
+    _postsMeta{
+      count
+    }
+    posts(
+      first: 4
+      after: $postId
+      orderBy: createdAt_DESC
+    ){
+      id
+      title
+      thumbnail
+      slug
+    }
+  }
+}

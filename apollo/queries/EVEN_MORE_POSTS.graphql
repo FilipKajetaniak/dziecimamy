@@ -1,0 +1,19 @@
+query Category($id: ID!, $postID: ID, $first: Int!){
+  Category(id: $id){
+    id
+    name
+    color
+    posts(
+      filter: {
+        id_not: $postID
+      }
+      first: $first
+      orderBy: createdAt_DESC
+    ){
+      id
+      title
+      thumbnail
+      slug
+    }
+  }
+}

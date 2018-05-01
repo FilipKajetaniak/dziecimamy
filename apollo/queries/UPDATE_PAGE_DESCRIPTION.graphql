@@ -1,0 +1,8 @@
+mutation UpdatePageDescription($description: String!){
+  updatePageContent(
+    id: "cjfjxdvqjbayg01725pw1onbb"
+    pageDescription: $description
+  ) {
+    id
+  }
+}
