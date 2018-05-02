@@ -16,6 +16,7 @@ import nuxt_plugin_apollopluginff0a5588_7aa20cd2 from 'nuxt_plugin_apollopluginf
 import nuxt_plugin_fontawesome_47952b5b from 'nuxt_plugin_fontawesome_47952b5b' // Source: ..\\plugins\\font-awesome
 import nuxt_plugin_nuxtquillplugin_3ab6ceae from 'nuxt_plugin_nuxtquillplugin_3ab6ceae' // Source: ..\\plugins\\nuxt-quill-plugin.js (ssr: false)
 import nuxt_plugin_vuescrollto_53dc20e5 from 'nuxt_plugin_vuescrollto_53dc20e5' // Source: ..\\plugins\\vue-scrollto
+import nuxt_plugin_disqus_6ecf2b12 from 'nuxt_plugin_disqus_6ecf2b12' // Source: ..\\plugins\\disqus
 
 
 // Component: <no-ssr>
@@ -157,6 +158,7 @@ async function createApp (ssrContext) {
   if (typeof nuxt_plugin_apollopluginff0a5588_7aa20cd2 === 'function') await nuxt_plugin_apollopluginff0a5588_7aa20cd2(app.context, inject)
   if (typeof nuxt_plugin_fontawesome_47952b5b === 'function') await nuxt_plugin_fontawesome_47952b5b(app.context, inject)
   if (typeof nuxt_plugin_vuescrollto_53dc20e5 === 'function') await nuxt_plugin_vuescrollto_53dc20e5(app.context, inject)
+  if (typeof nuxt_plugin_disqus_6ecf2b12 === 'function') await nuxt_plugin_disqus_6ecf2b12(app.context, inject)
   
   if (process.browser) { 
     if (typeof nuxt_plugin_nuxtquillplugin_3ab6ceae === 'function') await nuxt_plugin_nuxtquillplugin_3ab6ceae(app.context, inject)

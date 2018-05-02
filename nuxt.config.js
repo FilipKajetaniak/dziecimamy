@@ -14,6 +14,9 @@ module.exports = {
       { hid: 'og:description', name: 'og:description', content: 'Blog o wychowaniu, pomoc dla rodziców, jak radzić sobie z trudnymi zachowaniami dzieci, nastolatków' },
       { hid: 'description', name: 'description', content: 'Blog o wychowaniu, pomoc dla rodziców, jak radzić sobie z trudnymi zachowaniami dzieci, nastolatków' }
     ],
+    script: [
+      {src: '//dzikapapryka-2.disqus.com/count.js', id: 'dsq-count-scr', async: true}
+    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet',  href: 'https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i|Nunito:400,700,800' }
@@ -23,7 +26,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#0097ff',
+  loading: { color: '#0099ff',
     height: '2px'
   },
 
@@ -43,7 +46,8 @@ module.exports = {
   plugins: [
     { src: '~/plugins/font-awesome' },
     { src: '~plugins/nuxt-quill-plugin.js', ssr: false },
-    { src: '~/plugins/vue-scrollto' }
+    { src: '~/plugins/vue-scrollto' },
+    { src: '~/plugins/disqus' }
   ],
 
   /*

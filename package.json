@@ -33,6 +33,7 @@
     "postcss-nested": "^3.0.0",
     "postcss-responsive-type": "^1.0.0",
     "subscriptions-transport-ws": "^0.9.6",
+    "vue-disqus": "^3.0.1",
     "vue-lodash": "^2.0.0",
     "vue-quill-editor": "^3.0.5",
     "vue-scrollto": "^2.11.0"

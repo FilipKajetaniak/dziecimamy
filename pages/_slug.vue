@@ -16,7 +16,9 @@
                 <div class="bottom-elements">
                   <div class="dividing-dots">...</div>
                   <div class="share-on-facebook">Spodobał Ci się ten post? <span class="smile">😊</span><a v-bind:href="'https://www.facebook.com/sharer/sharer.php?u=dziecimamy.com/'+routeParam" target="_blank"><span class="fb-share"> Udostępnij go na Facebooku!</span></a></div>
-                </div>          
+                </div>
+                <!-- <vue-disqus shortname="dzikapapryka" :identifier="Blogpost.id" :url="`http://dziecimamy.com/${routeParam}`"></vue-disqus> -->
+                <div id="disqus_thread"></div>
               </article>
             </transition>
             <transition name="fade">
@@ -102,6 +104,18 @@ export default {
   mounted(){
   this.sendCatId();
   this.loaded = true;
+
+  var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://dzikapapryka-2.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
   }
 }
 </script>
@@ -236,7 +250,7 @@ export default {
 
 /* DISQUS STYLES */
 #disqus_thread a {
-  color: #f26d5b;
+  color: #0099ff;
 }
 /* DISQUS STYLES */
 
