@@ -22,6 +22,7 @@
 <script>
 import ALL_SAVED_POSTS from '~/apollo/queries/ALL_SAVED_POSTS.graphql'
 import DELETE_SAVED_POST from '~/apollo/queries/DELETE_SAVED_POST.graphql'
+import IS_VALID from '@/apollo/queries/IS_VALID.graphql'
 import { asyncify } from 'async'
 
 export default {
@@ -56,13 +57,12 @@ export default {
     }
   },
   asyncData(context) {
-    let skip = 0;
-    return context.app.provide.$apolloProvider.defaultClient.query({
-      query: ALL_SAVED_POSTS
-    })
-    .then((res) => {
-      return { allSavedposts: res.data.allSavedposts}
-    })
+      const savedPosts = context.app.provide.$apolloProvider.defaultClient.query({query: ALL_SAVED_POSTS});
+      const valid = context.app.provide.$apolloProvider.defaultClient.query({query: IS_VALID});
+
+      return Promise.all([valid, savedPosts])
+      .then(res => {return { allSavedposts: res[1].data.allSavedposts}})
+      .catch(()=> {context.redirect('/admin/zaloguj')})
   }
 }
 </script>

@@ -11,6 +11,7 @@
 <script>
 import categoryeditor from '@/components/categoryeditor.vue'
 import POST_LIST_WITH_ID from '~/apollo/queries/POST_LIST_WITH_ID.graphql'
+import IS_VALID from '@/apollo/queries/IS_VALID.graphql'
 import { asyncify } from 'async';
 
 export default {
@@ -32,12 +33,13 @@ export default {
     }
   },
   asyncData(context) {
-    return context.app.provide.$apolloProvider.defaultClient.query({
-      query: POST_LIST_WITH_ID
-    })
+    const postList = context.app.provide.$apolloProvider.defaultClient.query({query: POST_LIST_WITH_ID})
+    const valid = context.app.provide.$apolloProvider.defaultClient.query({query: IS_VALID});
+    return Promise.all([valid, postList])
     .then((res) => {
       return {allBlogposts: res.data.allBlogposts}
     })
+    .catch(()=> {context.redirect('/admin/zaloguj')})
   },
   created(){
     this.allBlogposts = this.allBlogposts.map((post)=>{

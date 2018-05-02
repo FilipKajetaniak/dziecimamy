@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import IS_VALID from '@/apollo/queries/IS_VALID.graphql'
+import { asyncify } from 'async';
 export default {
   layout: 'admin',
   methods: {
@@ -34,6 +36,10 @@ export default {
       this.$store.dispatch('logout');
       this.$router.push('/');
     }
+  },
+  asyncData(context){
+    return context.app.provide.$apolloProvider.defaultClient.query({query: IS_VALID})
+    .catch(() => {context.redirect('/admin/zaloguj')})
   }
 }
 </script>

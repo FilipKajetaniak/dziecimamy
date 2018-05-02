@@ -14,6 +14,7 @@
 <script>
 import PAGE_DESCRIPTION from '~/apollo/queries/PAGE_DESCRIPTION.graphql'
 import UPDATE_PAGE_DESCRIPTION from '~/apollo/queries/UPDATE_PAGE_DESCRIPTION.graphql'
+import IS_VALID from '@/apollo/queries/IS_VALID.graphql'
 import { asyncify } from 'async'
 export default {
   layout: 'admin',
@@ -42,10 +43,13 @@ export default {
       }
   },
   asyncData(context) {
-    return context.app.provide.$apolloProvider.defaultClient.query({query: PAGE_DESCRIPTION})
+    const description = context.app.provide.$apolloProvider.defaultClient.query({query: PAGE_DESCRIPTION});
+    const valid = context.app.provide.$apolloProvider.defaultClient.query({query: IS_VALID});
+    return Promise.all([valid, description])
     .then((res) => {
-     return {pageDescription: res.data.PageContent.pageDescription}
+     return {pageDescription: res[1].data.PageContent.pageDescription}
     })
+    .catch(()=> {context.redirect('/admin/zaloguj')})
   }
 }
 </script>

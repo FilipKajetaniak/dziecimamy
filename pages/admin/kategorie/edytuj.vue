@@ -20,6 +20,7 @@
 <script>
 import DELETE_CATEGORY from '~/apollo/queries/DELETE_CATEGORY.graphql'
 import CATEGORY_HOW_MANY_POSTS from '~/apollo/queries/CATEGORY_HOW_MANY_POSTS.graphql'
+import IS_VALID from '@/apollo/queries/IS_VALID.graphql'
 import { asyncify } from 'async'
 export default {
   layout: 'admin',
@@ -58,6 +59,11 @@ export default {
         }
       })
     }
+  },
+  asyncData(context){
+    return context.app.provide.$apolloProvider.defaultClient.query({query: IS_VALID})
+    .then(()=> {return})
+    .catch(()=> {context.redirect('/admin/zaloguj')})
   }
 }
 </script>

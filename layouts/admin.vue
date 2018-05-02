@@ -6,8 +6,8 @@
 </template>
 
 <script>
-
 import optionsbar from '@/components/optionsbar.vue'
+
 export default {
   middleware: 'isLoggedIn',
   data () {

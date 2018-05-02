@@ -14,6 +14,7 @@
 <script>
 import ABOUT_ME from '~/apollo/queries/ABOUT_ME.graphql'
 import UPDATE_ABOUT_ME from '~/apollo/queries/UPDATE_ABOUT_ME.graphql'
+import IS_VALID from '@/apollo/queries/IS_VALID.graphql'
 import { asyncify } from 'async'
 export default {
   layout: 'admin',
@@ -42,10 +43,13 @@ export default {
       }
   },
   asyncData(context) {
-    return context.app.provide.$apolloProvider.defaultClient.query({query: ABOUT_ME})
+    const about = context.app.provide.$apolloProvider.defaultClient.query({query: ABOUT_ME});
+    const valid = context.app.provide.$apolloProvider.defaultClient.query({query: IS_VALID});
+    return Promise.all([valid, about])
     .then((res) => {
-     return {aboutMe: res.data.PageContent.aboutMe}
+     return {aboutMe: res[1].data.PageContent.aboutMe}
     })
+    .catch(()=> {context.redirect('/admin/zaloguj')})
   }
 }
 </script>

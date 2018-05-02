@@ -21,6 +21,7 @@
 <script>
 import ALL_POSTS_TO_EDIT from '~/apollo/queries/ALL_POSTS_TO_EDIT.graphql'
 import DELETE_POST from '~/apollo/queries/DELETE_POST.graphql'
+import IS_VALID from '@/apollo/queries/IS_VALID.graphql'
 import { asyncify } from 'async'
 
 export default {
@@ -56,13 +57,13 @@ export default {
     }
   },
   asyncData(context) {
-    let skip = 0;
-    return context.app.provide.$apolloProvider.defaultClient.query({
-      query: ALL_POSTS_TO_EDIT
-    })
+    const posts = context.app.provide.$apolloProvider.defaultClient.query({query: ALL_POSTS_TO_EDIT});
+    const valid = context.app.provide.$apolloProvider.defaultClient.query({query: IS_VALID});
+    return Promise.all([valid, posts])
     .then((res) => {
-      return { allBlogposts: res.data.allBlogposts}
+      return { allBlogposts: res[1].data.allBlogposts}
     })
+    .catch(()=> {context.redirect('/admin/zaloguj')})
   }
 }
 </script>

@@ -11,8 +11,7 @@ export default function(context){
         if(!context.store.getters.getToken){
             context.store.commit('setToken', localStorage.getItem('token'))
         }
-      }
-
+      }      
     if(!context.store.getters.getToken){
         context.redirect('/admin/zaloguj')
     }

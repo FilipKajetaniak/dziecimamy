@@ -18,8 +18,8 @@ export default {
       show: false,
       canSuccess: true,
       duration: 5000,
-      height: '1px',
-      color: '#0099ff65',
+      height: '2px',
+      color: '#0099ff',
       failedColor: 'red',
     }
   },

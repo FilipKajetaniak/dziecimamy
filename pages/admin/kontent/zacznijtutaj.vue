@@ -13,6 +13,7 @@
 </template>
 <script>
 import START_HERE from '~/apollo/queries/START_HERE.graphql'
+import IS_VALID from '@/apollo/queries/IS_VALID.graphql'
 import UPDATE_START_HERE from '~/apollo/queries/UPDATE_START_HERE.graphql'
 import { asyncify } from 'async'
 export default {
@@ -42,10 +43,13 @@ export default {
       }
   },
   asyncData(context) {
-    return context.app.provide.$apolloProvider.defaultClient.query({query: START_HERE})
+    const starthere = context.app.provide.$apolloProvider.defaultClient.query({query: START_HERE});
+    const valid = context.app.provide.$apolloProvider.defaultClient.query({query: IS_VALID});
+    return Promise.all([valid, description])
     .then((res) => {
-     return {startHere: res.data.PageContent.startHere}
+     return {startHere: res[1].data.PageContent.startHere}
     })
+    .catch(()=> {context.redirect('/admin/zaloguj')})
   }
 }
 </script>

@@ -18,12 +18,19 @@
         </div>
 </template>
 <script>
+import IS_VALID from '@/apollo/queries/IS_VALID.graphql'
+import { asyncify } from 'async'
 export default {
   layout: 'admin',
   data () {
     return {
       
     }
+  },
+  asyncData(context){
+    return context.app.provide.$apolloProvider.defaultClient.query({query: IS_VALID})
+    .then(()=> {return})
+    .catch(()=> {context.redirect('/admin/zaloguj')})
   }
 }
 </script>

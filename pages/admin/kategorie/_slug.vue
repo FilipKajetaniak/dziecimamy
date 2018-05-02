@@ -12,6 +12,7 @@
 import categoryeditor from '@/components/categoryeditor.vue'
 import POST_LIST_WITH_ID from '~/apollo/queries/POST_LIST_WITH_ID.graphql'
 import GET_CATEGORY from '~/apollo/queries/GET_CATEGORY.graphql'
+import IS_VALID from '@/apollo/queries/IS_VALID.graphql'
 import { asyncify } from 'async';
 
 export default {
@@ -26,13 +27,14 @@ export default {
     }
   },
   asyncData(context) {
-    let getPostList = context.app.provide.$apolloProvider.defaultClient.query({query: POST_LIST_WITH_ID});
-    let getCategoryInfo = context.app.provide.$apolloProvider.defaultClient.query({query: GET_CATEGORY, variables: {slug: context.params.slug}});
-    
-    return Promise.all([getPostList, getCategoryInfo])
+    const getPostList = context.app.provide.$apolloProvider.defaultClient.query({query: POST_LIST_WITH_ID});
+    const getCategoryInfo = context.app.provide.$apolloProvider.defaultClient.query({query: GET_CATEGORY, variables: {slug: context.params.slug}});
+    const valid = context.app.provide.$apolloProvider.defaultClient.query({query: IS_VALID});
+    return Promise.all([getPostList, getCategoryInfo, valid])
     .then((res) => {
       return {allBlogposts: res[0].data.allBlogposts, Category: res[1].data.Category}
     })
+    .catch(()=> {context.redirect('/admin/zaloguj')})
   },
   created(){
     this.allBlogposts = this.allBlogposts.map((post)=>{

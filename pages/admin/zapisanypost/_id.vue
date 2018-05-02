@@ -5,6 +5,7 @@
 </template>
 <script>
 import posteditor from '@/components/posteditor.vue'
+import IS_VALID from '@/apollo/queries/IS_VALID.graphql'
 import GET_POST_TO_EDIT from '~/apollo/queries/GET_POST_TO_EDIT.graphql'
 import DELETE_SAVED_POST from '~/apollo/queries/DELETE_SAVED_POST.graphql'
 import { asyncify } from 'async'
@@ -42,28 +43,29 @@ export default {
   },
   asyncData(context) {
     let postId = context.params.id;
-    return context.app.provide.$apolloProvider.defaultClient.query({
+    const getPost =  context.app.provide.$apolloProvider.defaultClient.query({
       query: GET_POST_TO_EDIT,
-      variables: {
-            id: postId
-    }
-    })
+      variables: {id: postId}
+    });
+    const valid = context.app.provide.$apolloProvider.defaultClient.query({query: IS_VALID});
+    return Promise.all([valid, getPost])
     .then((res) => {
       return { 
       newpostprop: {
-          title: res.data.Savedpost.title,
-          articleHtml: res.data.Savedpost.articleHtml,
+          title: res[1].data.Savedpost.title,
+          articleHtml: res[1].data.Savedpost.articleHtml,
           category: {
-            name: res.data.Savedpost.category
+            name: res[1].data.Savedpost.category
           },
-          thumbnail: res.data.Savedpost.thumbnail,
-          snippet: res.data.Savedpost.snippet,
+          thumbnail: res[1].data.Savedpost.thumbnail,
+          snippet: res[1].data.Savedpost.snippet,
           postDay: 0,
           postMonth: 0,
           postYear: 0
         }
        }
     })
+    .catch(()=> {context.redirect('/admin/zaloguj')})
   }
 }
 </script>
