@@ -22,7 +22,6 @@
     "apollo-utilities": "^1.0.10",
     "autoprefixer": "^8.4.1",
     "babel-preset-vue-app": "^2.0.0",
-    "es6-promise": "^4.2.4",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.8.0",
     "isomorphic-fetch": "^2.2.1",

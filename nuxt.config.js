@@ -78,8 +78,11 @@ module.exports = {
       })
     ],
     babel: {
-      presets: ['babel-polyfill', 'vue-app','env']
+      presets: ['vue-app','env'],
     },
+    vendor: [
+      'babel-polyfill'
+    ],
     /*
     ** You can extend webpack config here
     */
