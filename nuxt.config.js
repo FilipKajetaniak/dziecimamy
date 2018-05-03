@@ -77,6 +77,9 @@ module.exports = {
         browsers: ['last 3 versions']
       })
     ],
+    babel: {
+      presets: ['babel-polyfill', 'vue-app','env']
+    },
     /*
     ** You can extend webpack config here
     */

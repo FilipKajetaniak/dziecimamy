@@ -21,6 +21,7 @@
     "apollo-link-ws": "^1.0.7",
     "apollo-utilities": "^1.0.10",
     "autoprefixer": "^8.4.1",
+    "babel-preset-vue-app": "^2.0.0",
     "es6-promise": "^4.2.4",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.8.0",
@@ -39,6 +40,9 @@
     "vue-scrollto": "^2.11.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "cross-env": "^5.1.4"
   }
 }
