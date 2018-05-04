@@ -37,7 +37,7 @@ export default {
     const valid = context.app.provide.$apolloProvider.defaultClient.query({query: IS_VALID});
     return Promise.all([valid, postList])
     .then((res) => {
-      return {allBlogposts: res.data.allBlogposts}
+      return {allBlogposts: res[1].data.allBlogposts}
     })
     .catch(()=> {context.redirect('/admin/zaloguj')})
   },

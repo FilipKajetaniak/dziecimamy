@@ -45,7 +45,7 @@ export default {
   asyncData(context) {
     const starthere = context.app.provide.$apolloProvider.defaultClient.query({query: START_HERE});
     const valid = context.app.provide.$apolloProvider.defaultClient.query({query: IS_VALID});
-    return Promise.all([valid, description])
+    return Promise.all([valid, starthere])
     .then((res) => {
      return {startHere: res[1].data.PageContent.startHere}
     })
