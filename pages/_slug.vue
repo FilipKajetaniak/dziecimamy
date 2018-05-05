@@ -37,14 +37,6 @@ import searchpage from '@/components/searchpage.vue'
 import smallmenu from '@/components/smallmenu.vue'
 
 export default {
-  head () {
-    return {
-      // 'og:title': this.Blogpost.title,
-      // 'og:url': `http://www.dziecimamy.com/${this.$route.params.slug}`,
-      // 'og:image': this.Blogpost.thumbnail,
-      // 'og:description': this.Blogpost.snippet
-    }
-  },
   data () {
     return {
       routeParam: this.$route.params.slug,
@@ -110,7 +102,7 @@ export default {
     this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
   };
 
-  (function() { // DON'T EDIT BELOW THIS LINE
+  (function() {
     var d = document, s = d.createElement('script');
     s.src = 'https://dzikapapryka-2.disqus.com/embed.js';
     s.setAttribute('data-timestamp', +new Date());

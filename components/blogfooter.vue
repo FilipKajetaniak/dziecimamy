@@ -2,6 +2,7 @@
   <footer>
     <div class="container transparent">
       <div class="wrapper-narrow">
+        <socialwidgets />
         <div class="contact">
           <div class="contact-email">
             <a href="mailto:kontakt@dziecimamy.com">kontakt@dziecimamy.com</a>
@@ -19,11 +20,15 @@
 </template>
 
 <script>
+import socialwidgets from '@/components/socialwidgets.vue'
 export default {
   data () {
     return {
       currentYear: 0
     }
+  },
+  components: {
+    socialwidgets
   },
   mounted(){
     this.currentYear = new Date().getFullYear()
