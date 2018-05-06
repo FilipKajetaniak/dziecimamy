@@ -65,7 +65,7 @@ module.exports = {
   */
 
 
-  buildDir: 'public_nodejs',
+  buildDir: 'prod',
   build: {
     publicPath: '/public/',
     extractCSS: true,
