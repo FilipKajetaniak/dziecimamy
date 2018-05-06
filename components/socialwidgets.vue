@@ -2,7 +2,7 @@
     <div class="social-media-widgets">
         <div class="ig-widget-container">
             <div class="ig-widget">
-                <div class="images-carousel" @click="description = !description" :style="{paddingLeft: `${padding}px`}">
+                <div class="images-carousel" :style="{paddingLeft: `${padding}px`}">
                     <div class="image" v-for="pic in pics" :key="pic" :style="{backgroundImage: `url('${pic}')`, transform: `translateX(-${shift}px)`}"></div>
                 </div>
                 <div class="top-widget-elements">
@@ -33,6 +33,8 @@
     </div>
 </template>
 <script>
+import GET_INSTA_PICS from '@/apollo/queries/GET_INSTA_PICS.graphql'
+import GET_INSTA_USER from '@/apollo/queries/GET_INSTA_USER.graphql'
 export default {
     data () {
         return {
@@ -54,6 +56,24 @@ export default {
         }
     },
     methods: {
+        getInstaPics(){
+            this.$apollo.query({
+                query: GET_INSTA_PICS
+            }).then(res => {
+               this.igTitles = res.data.getInstaPics.pics.map(post => post.caption.text);
+               this.pics = res.data.getInstaPics.pics.map(post => post.images.low_resolution.url);
+               this.currentTitle = this.igTitles[0];  
+            })
+        },
+        getInstaUser(){
+            this.$apollo.query({
+                query: GET_INSTA_USER
+            }).then(res => {
+                this.igUser = res.data.getInstaUser.info.username;
+                this.igFollowers = res.data.getInstaUser.info.counts.followed_by;
+                this.igProfilePic = res.data.getInstaUser.info.profile_picture;
+            })
+        },
         shiftPic(){
             this.shift += 320;
             this.description = true;
@@ -78,24 +98,6 @@ export default {
                 }
             },3500);
         },
-        fetchIg(){
-            const token = ""
-            return this.$axios.$get(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${token}&count=10`)
-                .then(res => {
-                    this.igTitles = res.data.map(post => post.caption.text);
-                    this.pics = res.data.map(post => post.images.low_resolution.url);
-                    this.currentTitle = this.igTitles[0];             
-                    })
-        },
-        fetchIgProfile(){
-            const token = ""
-            return this.$axios.$get(`https://api.instagram.com/v1/users/self/?access_token=${token}`)
-                .then(res => {
-                    this.igUser = res.data.username;
-                    this.igFollowers = res.data.counts.followed_by;
-                    this.igProfilePic = res.data.profile_picture;
-                })
-        }
     },
     mounted () {
         (function(d, s, id) {
@@ -106,9 +108,10 @@ export default {
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
         this.imageCarousel();
-        this.fetchIgProfile();
-        this.fetchIg();
-
+    },
+    created(){
+        this.getInstaUser();
+        this.getInstaPics();
     }
 }
 </script>

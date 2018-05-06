@@ -1,0 +1,5 @@
+{
+  getInstaUser(post: "Had to add an argument"){
+    info
+  }
+}

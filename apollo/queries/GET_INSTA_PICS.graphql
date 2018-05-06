@@ -1,0 +1,5 @@
+{
+    getInstaPics(post: "Had to add an argument"){
+        pics
+    }
+}
