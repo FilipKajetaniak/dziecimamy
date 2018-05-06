@@ -12,6 +12,7 @@ import { setContext, getLocation, getRouteData } from './utils'
 import { createStore } from './store.js'
 
 /* Plugins */
+import nuxt_plugin_axios_f381c50e from 'nuxt_plugin_axios_f381c50e' // Source: ./axios.js
 import nuxt_plugin_apollopluginff0a5588_7aa20cd2 from 'nuxt_plugin_apollopluginff0a5588_7aa20cd2' // Source: ./apollo.plugin.ff0a5588.js
 import nuxt_plugin_fontawesome_47952b5b from 'nuxt_plugin_fontawesome_47952b5b' // Source: ..\\plugins\\font-awesome
 import nuxt_plugin_nuxtquillplugin_3ab6ceae from 'nuxt_plugin_nuxtquillplugin_3ab6ceae' // Source: ..\\plugins\\nuxt-quill-plugin.js (ssr: false)
@@ -155,6 +156,7 @@ async function createApp (ssrContext) {
 
   // Plugin execution
   
+  if (typeof nuxt_plugin_axios_f381c50e === 'function') await nuxt_plugin_axios_f381c50e(app.context, inject)
   if (typeof nuxt_plugin_apollopluginff0a5588_7aa20cd2 === 'function') await nuxt_plugin_apollopluginff0a5588_7aa20cd2(app.context, inject)
   if (typeof nuxt_plugin_fontawesome_47952b5b === 'function') await nuxt_plugin_fontawesome_47952b5b(app.context, inject)
   if (typeof nuxt_plugin_vuescrollto_53dc20e5 === 'function') await nuxt_plugin_vuescrollto_53dc20e5(app.context, inject)
