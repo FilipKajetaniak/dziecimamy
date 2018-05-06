@@ -74,7 +74,8 @@ module.exports = {
       require('postcss-responsive-type')(),
       require('postcss-hexrgba')(),
       require('autoprefixer')({
-        browsers: ['last 3 versions']
+        browsers: ['last 3 versions'],
+        grid: true
       })
     ],
     babel: {

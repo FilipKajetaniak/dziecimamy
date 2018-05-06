@@ -150,7 +150,6 @@ export default {
     width: 320px;
     margin-right: 20px;
     margin-left: auto;
-    transform: translateY(1px);
     background-color: white;
     -webkit-box-shadow: 2px 2px 23px 0px rgb(0, 92, 158);
     -moz-box-shadow: 2px 2px 23px 0px rgba(0, 92, 158);
@@ -172,6 +171,7 @@ export default {
     background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0.75) -10%, transparent 100%);
     background: -moz-linear-gradient(to bottom, rgba(0, 0, 0, 0.75) -10%, transparent 100%);
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) -10%, transparent 100%);
+    border-radius: 10px;
 }
 
 .ig-name:hover{

@@ -92,17 +92,25 @@ export default {
 }
 .more-posts-grid{
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-column-gap: 20px;
     margin-top: 40px;
 }
 
 .more-posts-item{
     height: 250px;
-    width: 100%;
+    width: 22%;
     margin: 0 auto;
+    float: left;
+    margin: 0 1%;
+    margin-bottom: 30px;
 }
+
+/* .more-posts-item:first-of-type{
+    margin-left: 0;
+}
+
+.more-posts-item:last-of-type{
+    margin-right: 0;
+} */
 
 .more-posts-thumbnail{
     width: 100%;
@@ -164,8 +172,6 @@ export default {
     }
     .more-posts-grid{
         width: 90%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
         grid-column-gap: 5%;
         margin: 25px auto;
     }
@@ -175,6 +181,9 @@ export default {
     }
 
     .more-posts-item{
+        width: 44%;
+        margin: 0 3%;
+        float: left;
         text-align: left;
         margin-bottom: 30px;
     }
@@ -189,8 +198,6 @@ export default {
 
 
     .more-posts-grid{
-        display: grid;
-        grid-template-columns: 1fr;
         grid-column-gap: 20px;
         width: 90%;
         margin: 25px auto;
@@ -198,6 +205,10 @@ export default {
     .more-posts-item{
         text-align: left;
         margin-bottom: 30px;
+        float: left;
+        margin: 0 auto;
+        width: 100%;
+        margin-bottom: 20px;
     }
 
     .more-posts{
