@@ -4,7 +4,7 @@
         <div class="wrapper-narrow">
             <div class="newsletter">
               <div class="newsletter-form">
-                <span class="newsletter-description">Sratatata tutaj coś o newsletterze będzie</span>
+                <span class="newsletter-description">Zapisz się na bezpłatny newsletter i pobierz listę 12 błędów rodzicielskich. Sprawdź ile z nich popełniasz!</span>
                 <form action="https://landing.mailerlite.com/webforms/submit/k6d4f5" data-id="861094" data-code="k6d4f5" method="POST" target="_blank">
                     <input type="text" name="fields[name]" value="" autocomplete="name" x-autocompletetype="name" spellcheck="false" autocapitalize="off" autocorrect="off" class="newsletter-input" placeholder="Jak masz na imie?">
                     <input type="email" name="fields[email]" value="" autocomplete="email" x-autocompletetype="email" spellcheck="false" autocapitalize="off" autocorrect="off" class="newsletter-input" placeholder="Jaki masz e-mail?">
@@ -55,10 +55,6 @@ export default {
   box-sizing: border-box;
 }
 
-.newsletter-form form{
-  text-align: center;
-}
-
 .newsletter-div{
   width: 100%;
   background-color: #0097ff;
@@ -67,11 +63,12 @@ export default {
   background: linear-gradient(to left, #0097ff 0%, rgb(111, 193, 255) 100%);
 }
 .newsletter{
-  width: 98%;
+  width: 100%;
 }
 .newsletter-input{
-  width: 100%;
+  width: 47%;
   margin-bottom: 30px;
+  /* margin-left: 3%; */
   border: none;
   border-radius: 7px;
   font-size: 1.5em;
@@ -79,7 +76,15 @@ export default {
   background-color: rgba(255,255,255,0.2);
   padding: 10px 10px;
   transition: all cubic-bezier(.12,1,.76,.95) 500ms;
+  box-sizing: border-box;
 }
+.newsletter-input:last-of-type{
+  margin-left: 6%;
+}
+.newsletter-form > form{
+  text-align: right;
+}
+
 .newsletter-header{ 
   font-size: 3em;
   margin-bottom: 20px;
@@ -91,7 +96,7 @@ export default {
 }
 
 .newsletter-description{
-  font-size: 1.5em;
+  font-size: 2em;
   letter-spacing: 0.5px;
   color: white;
   font-family: Nunito;
@@ -149,7 +154,25 @@ export default {
 
 
 @media screen and (max-width: 770px) {
-
+.newsletter-input{
+  width: 100%;
+  margin-bottom: 30px;
+  margin-left: 1%;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.5em;
+  color: white;
+  background-color: rgba(255,255,255,0.2);
+  padding: 10px 10px;
+  transition: all cubic-bezier(.12,1,.76,.95) 500ms;
+  box-sizing: border-box;
+}
+.newsletter-input:last-of-type{
+  margin-left: 1%;
+}
+.newsletter-form > form{
+  text-align: center;
+}
 
 }
 
