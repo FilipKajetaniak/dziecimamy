@@ -53,7 +53,7 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: ['@nuxtjs/apollo', '@nuxtjs/font-awesome', '@nuxtjs/axios'],
+  modules: ['@nuxtjs/apollo', '@nuxtjs/font-awesome'],
   
   apollo: {
     clientConfigs: {

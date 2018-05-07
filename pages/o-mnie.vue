@@ -6,18 +6,19 @@
             <div class="wrapper-narrow">
                 <div class="about-me">
                     <div class="top-text">
-                        <h2>Kim jestem?</h2>
+                        <h2>Kim jestem?</h2>                 
                         <p>W domu kobietą, bardzo dorosłą, żoną i matką - mam na koncie dwa dojrzałe osobniki, mimo trudów i upadków proces wychowawczy szczęśliwie doprowadzony do końca.</p><br>
-                        <p>W pracy pedagogiem, mediatorem, zajmuję się interwencją kryzysową. Pracuję z rodzinami dotkniętymi przemocą.  Robię wszystko, żeby uchronić przed tym strasznym doświadczeniem inne, zagrożone rodziny: prowadzę kursy dobrego rodzicielstwa, warsztaty profilaktyczne dla dzieci i młodzieży i specjalistów pracujących z dzieciakami. Wspieram wszystkich, którzy chcą wychowywać swoje dzieci  w duchu miłości i  zrozumienia. Ale ze stawianiem granic, z szacunkiem i chrześcijańskimi wartościami. Wychowuję obce dzieci.</p><br>
-                        <img class="right-image" src="../assets/Img-right.png"/>
+                        <p>W pracy pedagogiem, mediatorem, zajmuję się interwencją kryzysową. Pracuję z rodzinami dotkniętymi przemocą.  Robię wszystko, żeby uchronić przed tym strasznym doświadczeniem inne, zagrożone rodziny:
+                        prowadzę kursy dobrego rodzicielstwa, warsztaty profilaktyczne dla dzieci i młodzieży i specjalistów pracujących z dzieciakami.Wspieram wszystkich, którzy chcą wychowywać swoje dzieci w duchu miłości i zrozumienia. Ale ze stawianiem granic, z szacunkiem i chrześcijańskimi wartościami. Wychowuję obce dzieci.</p>
                     </div>
                     <div class="bottom-text">
                         <h2>Dlaczego blog?</h2>
                         <p>Dlaczego nie? patrząc na blogosferę można odnieść wrażenie, że wychowanie to taki twór, który prawie nie istnieje. Chcę wpakować swój kijek w to mrowisko.</p>
                         <p>Jeszcze jedno, nazywam się Ewa Kajetaniak</p>
-                        <p>Wierzę i praktykuję, słucham głośno fajnej muzy, czytam, oglądam i bywam. Nie rzucam słów na wiatr i pereł przed wieprze oraz kamieni w człowieka, mam dystans do świata i siebie - no chyba że powiesz, że jestem gruba.</p>
-                        <div class="left-image" src="~/assets/Img-right.png" size="50%"></div>
+                        <p>Wierzę i praktykuję, słucham głośno fajnej muzy, czytam, oglądam i bywam. 
+                         Nie rzucam słów na wiatr i pereł przed wieprze oraz kamieni w człowieka, mam dystans do świata i siebie - no chyba że powiesz, że jestem gruba.</p>
                     </div>
+                    <div class="portrait"><img src="~/assets/Img-right.png"></div>
                 </div>
             </div>
         </div>
@@ -88,15 +89,38 @@ export default {
 .top-text{
     min-height: 400px;
     position: relative;
+    vertical-align: top;
 }
-.right-image{
-    width: 400px;
-    height: auto;
-    shape-outside: url('../assets/Img-right.png');
-    float: right;
-    margin-top: -300px;
+.portrait{
+    width: 100%;
+    height: 300px;
+    text-align: center;
 }
-.right-image{
-    
+.portrait > img{
+    height: 300px;
+    width: auto;
+}
+
+@media screen and (max-width: 770px){
+    .portrait{
+        height: auto;
+        width: 90%;
+    }
+    .portrait > img {
+        height: auto;
+        width: 90%;
+        margin-bottom: -10px;
+        opacity: 0.8;
+    }
+}
+@media screen and (max-width: 438px){
+    .portrait{
+        height: auto;
+        width: 100%;
+    }
+    .portrait > img {
+        height: auto;
+        width: 100%;
+    }
 }
 </style>
