@@ -63,6 +63,9 @@ export default {
     .then((res) => {
       return { Blogpost: res.data.Blogpost }
     })
+    .catch((e) => {
+      error({ statusCode: 404, message: 'Post not found' })
+    })
   },
   methods: {
     toTwoDigits: num => {if(num < 10){return '0'+num}else{return num}},

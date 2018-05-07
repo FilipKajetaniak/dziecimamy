@@ -31,6 +31,7 @@ export default {
     socialwidgets
   },
   mounted(){
+    this.visible = true;
     this.currentYear = new Date().getFullYear()
   }
 }
@@ -46,7 +47,6 @@ footer{
   background: linear-gradient(to right, #0097ff 0%, rgb(111, 193, 255) 100%);
   padding-top: 10px;
 }
-
 
 .transparent{
   background: transparent !important;

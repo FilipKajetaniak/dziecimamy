@@ -9,7 +9,7 @@
                         {{post.title}}
                     </div>
                 </div>
-                <div class="no-results" v-else>Ups nie znaleziono szukanej frazy! 😢</div>
+                <div class="no-results" v-else>Nie znaleziono szukanej frazy! 😢</div>
             </div>
         </div>
     </div>

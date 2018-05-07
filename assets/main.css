@@ -1,7 +1,9 @@
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  word-wrap: break-word
+  word-wrap: break-word;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 body{
@@ -115,7 +117,6 @@ a:visited{
   opacity: 0.2;
   transition: all 50ms;
 }
-
 
 @media screen and (max-width: 1300px) {
     .wrapper-narrow{

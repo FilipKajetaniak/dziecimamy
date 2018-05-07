@@ -107,6 +107,14 @@ export default {
   }
 }
 </script>
+<style scoped>
+.page-transition-enter-active, .page-transition-leave-active {
+  transition: none !important;
+}
+.page-transition-enter, .page-transition-leave-to{
+  opacity: 1 !important;
+}
+</style>
 
 <style>
 .slideout-enter-active, .slideout-leave-active {
