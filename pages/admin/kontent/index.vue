@@ -2,7 +2,7 @@
     <div class="admin-options">
         <router-link to="/admin/kontent/opis">
           <div class="admin-option">
-            <div class="option-name">Zmień opis strony</div>
+            <div class="option-name">Zmień tekst newslettera</div>
           </div>
         </router-link>
         <router-link to="/admin/kontent/zacznijtutaj">

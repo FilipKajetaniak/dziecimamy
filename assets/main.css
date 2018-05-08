@@ -51,9 +51,11 @@ body{
 
 ::selection {
   background: #f8b724;
+  color: white;
 }
 ::-moz-selection {
   background: #f8b724;
+  color: white;
 }
 
 a:link{

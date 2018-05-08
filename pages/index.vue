@@ -4,9 +4,9 @@
     <div v-bind:class="{fadeout: !show}">
       <searchpage v-if="searchPhrase"/>
       <div v-else>
-        <blogheader v-bind:description="pageDescription" />
+        <blogheader/>
         <blogposts v-on:hidePosts="show = false" v-bind:allBlogposts="allBlogposts.slice(0,5)" v-bind:ispage="false"/>
-        <newsletter v-show="allBlogposts.length > 4" style="margin-bottom: 50px !important;"/>
+        <newsletter v-bind:description="newsletterDescription" v-show="allBlogposts.length > 4" style="margin-bottom: 50px !important;"/>
         <blogposts v-on:hidePosts="show = false" v-bind:allBlogposts="allBlogposts.slice(5,10)" v-bind:ispage="true"/>
         <div class="container transparent">
           <div class="wrapper-narrow">           
@@ -32,7 +32,7 @@ export default {
   data () {
     return {
       smallMenu: false,
-      pageDescription: '',
+      newsletterDescription: '',
       Yoff: 0,
       show: true
     }
@@ -51,7 +51,7 @@ export default {
     .then((res) => {
       return {
         allBlogposts: res[0].data.allBlogposts,
-        pageDescription: res[1].data.PageContent.pageDescription
+        newsletterDescription: res[1].data.PageContent.pageDescription
       }
     })
   },

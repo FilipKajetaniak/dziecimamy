@@ -17,7 +17,10 @@
                   <div class="dividing-dots">...</div>
                   <div class="share-on-facebook">Spodobał Ci się ten post? <span class="smile">😊</span><a v-bind:href="'https://www.facebook.com/sharer/sharer.php?u=dziecimamy.com/'+routeParam" target="_blank"><span class="fb-share"> Udostępnij go na Facebooku!</span></a></div>
                 </div>
-                <div id="disqus_thread"></div>
+                <smallnewsletter v-bind:message="newsletterDescription" v-bind:visible="showSmallNewsletter"/>
+                <div class="disqus-container">
+                  <div id="disqus_thread"></div>
+                </div>
               </article>
             </transition>
             <transition name="fade">
@@ -31,8 +34,10 @@
 
 <script>
 import THIS_POST from '~/apollo/queries/THIS_POST.graphql'
+import PAGE_DESCRIPTION from '~/apollo/queries/PAGE_DESCRIPTION.graphql'
 import moreposts from '@/components/moreposts.vue'
 import searchpage from '@/components/searchpage.vue'
+import smallnewsletter from '@/components/smallnewsletter.vue'
 import smallmenu from '@/components/smallmenu.vue'
 
 export default {
@@ -44,13 +49,17 @@ export default {
       fadein: false,
       smallMenu: true,
       loaded: false,
-      switchPost: false
+      switchPost: false,
+      newsletterDescription: '',
+      Yoff: 0,
+      showSmallNewsletter: false
     }
   },
   components: {
     moreposts,
     smallmenu,
-    searchpage
+    searchpage,
+    smallnewsletter
   },
   asyncData(context) {
     let postSlug = context.params.slug;
@@ -78,6 +87,13 @@ export default {
     },
     sendCatId(){
       this.$store.commit('setMorePostsCategory', this.Blogpost.category.id);
+    },
+    getNewsletterMessage(){
+      this.$apollo.query({query: PAGE_DESCRIPTION})
+      .then(res => {this.newsletterDescription = res.data.PageContent.pageDescription})
+    },
+    showNewsletter(){
+      this.showSmallNewsletter = true;
     }
   },
   watch: {
@@ -95,21 +111,36 @@ export default {
       return this.$store.getters.getSearchPhrase
     }
   },
+  created(){
+    this.getNewsletterMessage();
+  },
   mounted(){
-  this.sendCatId();
-  this.loaded = true;
+    const stopChecking = () => {
+      document.removeEventListener('scroll', checkOffset);
+      this.showNewsletter();
+    };
+    const checkOffset = event => {
+        let offset = document.querySelector('.disqus-container').offsetTop - window.innerHeight + 250;
+        if (window.pageYOffset > offset && this.newsletterDescription){
+          stopChecking();
+        };
+    };
+    document.addEventListener('scroll', checkOffset)
 
-  var disqus_config = function () {
-    this.page.url = `http://localhost:3000/${this.Blogpost.slug}`;  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = this.Blogpost.id; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-  };
+    this.sendCatId();
+    this.loaded = true;
 
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://dzikapapryka-2.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
+    var disqus_config = function () {
+      this.page.url = `http://localhost:3000/${this.Blogpost.slug}`;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = this.Blogpost.id; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://dzikapapryka-2.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
   }
 }
 </script>
@@ -145,7 +176,6 @@ export default {
 .article-title{
     width: 100%;
     height: auto;
-    /* text-align: center; */
     font-family: Nunito;
     color: #0097ff;
     font-weight: 800;
@@ -186,10 +216,6 @@ export default {
 }
 
 .article-text > h1 {
-    /* font-size: 1.6em;
-    font-weight: 800;
-    font-family: Nunito; */
-
     font-size: 1.4em;
     font-weight: bold;
     font-family: Lora;
@@ -236,7 +262,7 @@ export default {
   letter-spacing: 0.5px;
   width: 100%;
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 40px;
 }
 .smile{
   margin-left: 1px;

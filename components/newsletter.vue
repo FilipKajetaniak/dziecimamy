@@ -4,7 +4,7 @@
         <div class="wrapper-narrow">
             <div class="newsletter">
               <div class="newsletter-form">
-                <span class="newsletter-description">Zapisz się na bezpłatny newsletter i pobierz listę 12 błędów rodzicielskich. Sprawdź ile z nich popełniasz!</span>
+                <span class="newsletter-description">{{description}}</span>
                 <form action="https://landing.mailerlite.com/webforms/submit/k6d4f5" data-id="861094" data-code="k6d4f5" method="POST" target="_blank">
                     <input type="text" name="fields[name]" value="" autocomplete="name" x-autocompletetype="name" spellcheck="false" autocapitalize="off" autocorrect="off" class="newsletter-input" placeholder="Jak masz na imie?">
                     <input type="email" name="fields[email]" value="" autocomplete="email" x-autocompletetype="email" spellcheck="false" autocapitalize="off" autocorrect="off" class="newsletter-input" placeholder="Jaki masz e-mail?">
@@ -19,6 +19,7 @@
 
 <script>
 export default {
+  props: ['description'],
   data () {
     return {
 

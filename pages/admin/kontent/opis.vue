@@ -1,6 +1,6 @@
 <template>
    <div class="admin-options">
-       <div class="option-name outside">Zmień opis</div>
+       <div class="option-name outside">Zmień opis newslettera</div>
        <textarea class="input content-editor" v-model="pageDescription"></textarea>
        <button class="option-button green-button" style="margin-bottom: 50px;" @click="updateDescription()">Zmień</button>
        <button class="option-button cancel" style="margin-left: 10px;">Anuluj</button>
