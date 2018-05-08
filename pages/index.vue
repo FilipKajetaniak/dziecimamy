@@ -10,7 +10,7 @@
         <blogposts v-on:hidePosts="show = false" v-bind:allBlogposts="allBlogposts.slice(5,10)" v-bind:ispage="true"/>
         <div class="container transparent">
           <div class="wrapper-narrow">           
-            <router-link v-if="numberOfAllPosts > 10" rel="next" class="change-page right-button" v-bind:to="'/strona/'+2">Starsze posty <font-awesome-icon style="transform: translateY(1px); font-size: 0.85em; margin-left: 5px;" :icon="['fas', 'arrow-right']"/></router-link>
+            <router-link v-if="numberOfAllPosts > 10" rel="next" class="change-page right-button" v-bind:to="'/strona/'+2">Starsze posty <righticon class="right-icon"/></router-link>
           </div>
         </div>
       </div>
@@ -24,6 +24,7 @@ import smallmenu from '@/components/smallmenu.vue'
 import blogheader from '@/components/blogheader.vue'
 import newsletter from '@/components/newsletter.vue'
 import searchpage from '@/components/searchpage.vue'
+import righticon from '@/components/righticon.vue'
 import ALL_POSTS from '~/apollo/queries/ALL_POSTS.graphql'
 import PAGE_DESCRIPTION from '~/apollo/queries/PAGE_DESCRIPTION.graphql'
 import { asyncify } from 'async'
@@ -60,7 +61,8 @@ export default {
     blogheader,
     newsletter,
     smallmenu,
-    searchpage
+    searchpage,
+    righticon
   },
   computed: {
     numberOfAllPosts(){
@@ -105,6 +107,12 @@ export default {
   float: right;
   clear: both;
   color: #d1d1d1 !important;
+}
+.right-icon{
+  height: 0.83em;
+  fill: #d1d1d1;
+  transform: translateY(3px);
+  margin-left: 5px;
 }
 
 @media screen and (max-width: 770px){

@@ -45,17 +45,18 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/font-awesome' },
     { src: '~plugins/nuxt-quill-plugin.js', ssr: false },
     { src: '~/plugins/vue-scrollto' },
     { src: '~/plugins/disqus' }
   ],
 
-  /*
-  ** Nuxt.js modules
-  */
-  modules: ['@nuxtjs/apollo', '@nuxtjs/font-awesome'],
-  
+  modules: ['@nuxtjs/apollo','@nuxtjs/google-analytics'],
+
+  'google-analytics': {
+    id: 'XXXXXXXX'
+  },
+
+
   apollo: {
     clientConfigs: {
       default: '~/apollo/client-configs/default.js'

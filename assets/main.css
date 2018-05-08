@@ -81,6 +81,14 @@ a:visited{
   color: rgb(85, 85, 85) !important;
 }
 
+.change-page:hover > .left-icon{
+  fill: rgb(85, 85, 85) !important;
+}
+
+.change-page:hover > .right-icon{
+  fill: rgb(85, 85, 85) !important;
+}
+
 .cta-button{
   border: none;
   outline: none;

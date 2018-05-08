@@ -8,13 +8,13 @@
                 <router-link to="/">
                   <div class="small-menu-item homepage" @click="clearSearchPhrase">dziecimamy</div>
                 </router-link>
-                  <div class="small-menu-item social-media facebook"><a href="https://www.facebook.com/idziecimamy/"><font-awesome-icon class="fab fa-facebook-square" :icon="['fab', 'facebook-square']"/></a></div>
-                  <div class="small-menu-item social-media instagram"><a href="https://www.instagram.com/kokornak.idziecimamy/"><font-awesome-icon class="fab fa-instagram" :icon="['fab', 'instagram']"/></a></div>
-                  <div class="small-menu-item social-media twitter"><a href="https://twitter.com/kokornak"><font-awesome-icon class="fab fa-twitter" :icon="['fab', 'twitter']"/></a></div>
-                  <div class="small-menu-item social-media google-plus"><a href="https://plus.google.com/107884031529380169655"><font-awesome-icon class="fab fa-google-plus-g" :icon="['fab', 'google-plus-g']"/></a></div>
+                  <div class="small-menu-item social-media"><a href="https://www.facebook.com/idziecimamy/"><fbicon class="icon facebook" /></a></div>
+                  <div class="small-menu-item social-media"><a href="https://www.instagram.com/kokornak.idziecimamy/"><igicon class="icon instagram" /></a></div>
+                  <div class="small-menu-item social-media"><a href="https://twitter.com/kokornak"><twicon class="icon twitter" /></a></div>
+                  <div class="small-menu-item social-media"><a href="https://plus.google.com/107884031529380169655"><gpicon class="icon google-plus" /></a></div>
               </div>
               <div class="right-side-buttons">
-                <div class="small-menu-item search-menu-item hideable" id="search-menu-button"><font-awesome-icon class="search-icon" :icon="['fas', 'search']"/>
+                <div class="small-menu-item search-menu-item hideable" id="search-menu-button"><searchicon class="icon search-icon"/>
                   <div class="small-menu-popup" id="search-popup">
                     <div class="search-inputs">
                       <input type="text" placeholder="Wpisz szukaną frazę" v-model="search">
@@ -51,10 +51,10 @@
               <router-link to="/archiwum"><div :class="{'mobile-menu-item': true, 'landed': landed}" style="transition-delay: 180ms">Stare dzieje</div></router-link>
               <router-link to="/o-mnie"><div :class="{'mobile-menu-item': true, 'landed': landed}" style="transition-delay: 240ms">Z kim masz do czynienia</div></router-link>
               <div :class="{'mobile-menu-item': true, 'social-media-links': true, 'landed': landed}" style="transition-delay: 320ms">
-                <div class="small-menu-item social-media facebook"><a href="https://www.facebook.com/idziecimamy/"><font-awesome-icon class="fab fa-facebook-square" :icon="['fab', 'facebook-square']"/></a></div>
-                <div class="small-menu-item social-media instagram"><a href="https://www.instagram.com/kokornak.idziecimamy/"><font-awesome-icon class="fab fa-instagram" :icon="['fab', 'instagram']"/></a></div>
-                <div class="small-menu-item social-media twitter"><a href="https://twitter.com/kokornak"><font-awesome-icon class="fab fa-twitter" :icon="['fab', 'twitter']"/></a></div>
-                <div class="small-menu-item social-media google-plus"><a href="https://plus.google.com/107884031529380169655"><font-awesome-icon class="fab fa-google-plus-g" :icon="['fab', 'google-plus-g']"/></a></div>
+                  <div class="small-menu-item social-media"><a href="https://www.facebook.com/idziecimamy/"><fbicon class="icon facebook" /></a></div>
+                  <div class="small-menu-item social-media"><a href="https://www.instagram.com/kokornak.idziecimamy/"><igicon class="icon instagram" /></a></div>
+                  <div class="small-menu-item social-media"><a href="https://twitter.com/kokornak"><twicon class="icon twitter" /></a></div>
+                  <div class="small-menu-item social-media"><a href="https://plus.google.com/107884031529380169655"><gpicon class="icon google-plus" /></a></div>
               </div>
               <div class="categories-menu">
 
@@ -67,8 +67,20 @@
 </template>
 
 <script>
+import igicon from '@/components/igicon.vue'
+import fbicon from '@/components/fbicon.vue'
+import twicon from '@/components/twicon.vue'
+import gpicon from '@/components/gpicon.vue'
+import searchicon from '@/components/searchicon.vue'
 export default {
   props: ['smallMenu'],
+  components: {
+    igicon,
+    fbicon,
+    twicon,
+    gpicon,
+    searchicon
+  },
   data () {
     return {
       clicked: false,
@@ -430,7 +442,7 @@ transition: all cubic-bezier(.13,1.02,.18,.9) 200ms;
 
   .search-icon{
     font-size: 0.9em; 
-    transform: translateY(1px)
+    transform: translateY(0px)
   }
 
 .small-menu-popup-item{
@@ -479,29 +491,29 @@ transition: all cubic-bezier(.13,1.02,.18,.9) 200ms;
 }
 
 .social-media{
-  color: #d1d1d1;
+  fill: #d1d1d1;
   font-size: 1.4em;
   font-weight: 300;
 }
 
 .social-media:hover{
-  color: #8d8d8d;
+  fill: #8d8d8d;
 }
 
 .facebook:hover{
-  color: #3b5998;
+  fill: #3b5998;
 }
 
 .instagram:hover{
-  color: black;
+  fill: black;
 }
 
 .google-plus:hover{
-  color: #de5f54;
+  fill: #de5f54;
 }
 
 .twitter:hover{
-  color: #00aced;
+  fill: #00aced;
 }
 
 .search-inputs{
@@ -547,7 +559,13 @@ transition: all cubic-bezier(.13,1.02,.18,.9) 200ms;
   text-decoration: none;
 }
 
-
+.icon{
+  height: 1em;
+  transform: translateY(3.5px);
+  dispplay: inline-block;
+  line-height: 1.3em;
+  fill: #d1d1d1;
+}
 
 @media screen and (min-width: 1083px) {
   .mobile-menu-items{

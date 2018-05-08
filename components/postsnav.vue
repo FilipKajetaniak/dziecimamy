@@ -3,35 +3,41 @@
     <div class="wrapper-narrow">
       <div class="pagination-buttons" v-show="!categoryMode">
         <div>
-          <router-link rel="next" v-bind:to="prevPage()" class="change-page left-button"><font-awesome-icon style="font-size: 0.85em; margin-right: 5px;" :icon="['fas', 'arrow-left']"/> Nowsze posty</router-link>
+          <router-link rel="next" v-bind:to="prevPage()" class="change-page left-button"><lefticon class="left-icon" />Nowsze posty</router-link>
         </div>
         <div class="pages-count">
           <router-link to="/" class="page-number">1</router-link>
           <router-link v-bind:to="`/strona/${number}`" v-for="number in pagesArray" :key="number" v-bind:class="{'page-number': true, activepage: pageIsActive(number)}"> {{number}} </router-link>
         </div>
         <div class="right-button-div">
-          <router-link v-if="numberOfAllPosts > (Number(this.$route.params.page) * 10)" rel="prev" v-bind:to="nextPage()" class="change-page right-button">Starsze posty <font-awesome-icon style="font-size: 0.85em; margin-left: 5px;" :icon="['fas', 'arrow-right']"/></router-link>
+          <router-link v-if="numberOfAllPosts > (Number(this.$route.params.page) * 10)" rel="prev" v-bind:to="nextPage()" class="change-page right-button">Starsze posty <righticon class="right-icon"/></router-link>
         </div>
       </div>
 
       <div class="pagination-buttons" v-show="categoryMode">
         <div>
-          <router-link rel="next" v-bind:to="prevCategoryPage()" class="change-page left-button"><font-awesome-icon style="font-size: 0.85em; margin-right: 5px;" :icon="['fas', 'arrow-left']"/> Nowsze posty</router-link>
+          <router-link rel="next" v-bind:to="prevCategoryPage()" class="change-page left-button"><lefticon class="left-icon" /> Nowsze posty</router-link>
         </div>
         <div class="pages-count">
           <router-link v-bind:to="`/kategoria/${slug}`" class="page-number">1</router-link>
           <router-link v-bind:to="`/kategoria/${slug}/strona/${number}`" v-for="number in pagesArray" :key="number" v-bind:class="{'page-number': true, activepage: pageIsActive(number)}"> {{number}} </router-link>
         </div>
         <div class="right-button-div">
-          <router-link rel="prev"  v-if="numberOfAllPosts > (Number(this.$route.params.page) * 10)" v-bind:to="nextCategoryPage()" class="change-page right-button">Starsze posty <font-awesome-icon style="font-size: 0.85em; margin-left: 5px;" :icon="['fas', 'arrow-right']"/></router-link>
+          <router-link rel="prev"  v-if="numberOfAllPosts > (Number(this.$route.params.page) * 10)" v-bind:to="nextCategoryPage()" class="change-page right-button">Starsze posty <righticon class="right-icon"/></router-link>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import lefticon from '@/components/lefticon.vue'
+import righticon from '@/components/righticon.vue'
 export default {
   props: ['numberOfAllPosts','categoryMode', 'slug'],
+  components: {
+    lefticon,
+    righticon
+  },
   data () {
     return {
     }
@@ -119,6 +125,22 @@ export default {
   color: rgb(85, 85, 85) !important;
   cursor: auto !important;
 }
+.left-icon{
+  height: 0.83em;
+  transform: translateY(1.5px);
+  fill: #d1d1d1;
+  margin-right: 8px;
+}
+.left-icon:hover{
+  fill: rgb(85, 85, 85);
+}
+.right-icon{
+  height: 0.83em;
+  fill: #d1d1d1;
+  transform: translateY(3px);
+  margin-left: 5px;
+}
+
 
 @media screen and (max-width: 770px) {
   .pages-count{

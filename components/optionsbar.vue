@@ -11,18 +11,20 @@
         </div>
     </nav>
 <transition name="slide">
-    <div class="status-alerts ok" v-show="ok"><font-awesome-icon style="margin-right: 10px;" :icon="['fas', 'check']"/>{{message}}</div>
+    <div class="status-alerts ok" v-show="ok"><okicon class="ok-icon"/>{{message}}</div>
 </transition>
 <transition name="slide">
-    <div class="status-alerts wrong" v-show="error"><font-awesome-icon style="margin-right: 10px;" :icon="['fas', 'times']"/>Oops coś poszło nie tak!</div>
+    <div class="status-alerts wrong" v-show="error"><erricon class="error-icon"/>Oops coś poszło nie tak!</div>
 </transition>
 </div>
 </template>
 <script>
+import okicon from '@/components/okicon.vue'
+import erricon from '@/components/erricon.vue'
 export default {
-  data () {
-    return {
-    }
+  components: {
+      okicon,
+      erricon
   },
   methods: {
       logout(){
@@ -84,5 +86,17 @@ export default {
 
 .wrong{
     background-color: rgb(238, 84, 84);
+}
+.error-icon{
+    height: 1em;
+    fill: white;
+    transform: translateY(3px);
+    margin-right: 9px;
+}
+.ok-icon{
+    height: 1em;
+    fill: white;
+    transform: translateY(3px);
+    margin-right: 9px;
 }
 </style>
