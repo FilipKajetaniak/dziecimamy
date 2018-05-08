@@ -50,7 +50,7 @@ export default {
 
 .newsletter-form{
   width: 100%;
-  max-width: 700px;
+  max-width: 1000px;
   margin: 50px auto;
   padding-right: 13.5px;
   box-sizing: border-box;
@@ -67,9 +67,10 @@ export default {
   width: 100%;
 }
 .newsletter-input{
-  width: 47%;
+  width: 250px;
   margin-bottom: 30px;
-  /* margin-left: 3%; */
+  margin-left: 15px;
+  margin-right: 15px;
   border: none;
   border-radius: 7px;
   font-size: 1.5em;
@@ -79,11 +80,8 @@ export default {
   transition: all cubic-bezier(.12,1,.76,.95) 500ms;
   box-sizing: border-box;
 }
-.newsletter-input:last-of-type{
-  margin-left: 6%;
-}
 .newsletter-form > form{
-  text-align: right;
+  text-align: center;
 }
 
 .newsletter-header{ 
@@ -101,7 +99,7 @@ export default {
   letter-spacing: 0.5px;
   color: white;
   font-family: Nunito;
-  /* font-weight: 800; */
+  text-align: center;
   font-weight: 300;
   margin-bottom: 30px;
   display: inline-block;
@@ -137,17 +135,20 @@ export default {
   border: none;
   outline: none;
   font-family: Nunito;
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-weight: 700;
+  height: 47px;
   letter-spacing: 2px;
   display: inline-block;
   color: white;
   padding: 10px 15px;
   cursor: pointer;
   background-color: #f8b724;
-  border-radius: 50px;
+  border-radius: 10px;
   transition: all 150ms ease-in-out;
-  margin-top: 10px;
+  margin-top: 30px;
+  margin-left: 15px;
+  margin-right: 15px;
   -webkit-box-shadow: 3px 3px 4px -1px #005fdb77;
   -moz-box-shadow: 3px 3px 4px -1px #005fdb77;
   box-shadow: 3px 3px 4px -1px #005fdb77;
@@ -167,7 +168,28 @@ export default {
   background-color: #ffd87c;
   transition: all 50ms;
 }
+@media screen and (max-width: 880px) {
+  .newsletter-input{
+    width: 220px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 
+  .newsletter-button{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+@media screen and (max-width: 790px) {
+  .newsletter-input{
+    font-size: 1.4em;
+    width: 200px;
+  }
+
+  .newsletter-button{
+    font-size: 1.2em;
+  }
+}
 @media screen and (max-width: 770px) {
 .newsletter-input{
   width: 100%;
