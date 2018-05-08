@@ -8,7 +8,7 @@
                 <form action="https://landing.mailerlite.com/webforms/submit/k6d4f5" data-id="861094" data-code="k6d4f5" method="POST" target="_blank">
                     <input type="text" name="fields[name]" value="" autocomplete="name" x-autocompletetype="name" spellcheck="false" autocapitalize="off" autocorrect="off" class="newsletter-input" placeholder="Jak masz na imie?">
                     <input type="email" name="fields[email]" value="" autocomplete="email" x-autocompletetype="email" spellcheck="false" autocapitalize="off" autocorrect="off" class="newsletter-input" placeholder="Jaki masz e-mail?">
-                    <button type="submit" class="cta-button newsletter-button">Subskrybuj</button>
+                    <button type="submit" class="newsletter-button">Subskrybuj</button>
                 </form>
               </div>
              </div>
@@ -134,10 +134,17 @@ export default {
 }
 
 .newsletter-button{
+  border: none;
+  outline: none;
+  font-family: Nunito;
+  font-size: 1.2em;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: inline-block;
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
   background-color: #f8b724;
-  background: -webkit-linear-gradient(left, #f8b724 0%, #f8b724 100%);
-  background: -moz-linear-gradient(left, #f8b724 0%, #f8b724 100%);
-  background: linear-gradient(left, #f8b724 0%, #f8b724 100%);
   border-radius: 50px;
   transition: all 150ms ease-in-out;
   margin-top: 10px;
@@ -152,7 +159,14 @@ export default {
   -moz-box-shadow: 5px 6px 9px -1px #005fdb77;
   box-shadow: 5px 6px 9px -1px #005fdb77;
 }
-
+.newsletter-button:active{
+  transform: translateY(0);
+  -webkit-box-shadow: 0px 0px 0px 0px #005fdb;
+  -moz-box-shadow: 0px 0px 0px 0px #005fdb;
+  box-shadow: 0px 0px 0px 0px #005fdb;
+  background-color: #ffd87c;
+  transition: all 50ms;
+}
 
 @media screen and (max-width: 770px) {
 .newsletter-input{

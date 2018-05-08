@@ -4,7 +4,7 @@
       <h2>{{message}}</h2>
       <input class="small-newsletter-input" type="text" placeholder="Jak masz na imie?">
       <input class="small-newsletter-input" type="email" placeholder="Jaki masz e-mail?">
-      <button class="cta-button small-newsletter-button" type="submit">Subskrybuj</button>
+      <button class="small-newsletter-button" type="submit">Subskrybuj</button>
     </form>
   </div>
 </template>
@@ -87,18 +87,37 @@ export default {
 
 .small-newsletter-button{
   background-color: #f8b724;
-  background: -webkit-linear-gradient(left, #f8b724 0%, #f8b724 100%);
-  background: -moz-linear-gradient(left, #f8b724 0%, #f8b724 100%);
-  background: linear-gradient(left, #f8b724 0%, #f8b724 100%);
   border-radius: 15px;
   transition: all 150ms ease-in-out;
   margin-top: 10px;
   margin-right: 10px;
   margin-left: 10px;
   font-size: 1em;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
+}
+
+.small-newsletter-button{
+  border: none;
+  outline: none;
+  font-family: Nunito;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: inline-block;
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: #f8b724;
+  border-radius: 15px;
+  transition: all 150ms ease-in-out;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 1em;
+}
+
+.small-newsletter-button:active{
+  transform: translateY(0);
+  background-color: #ffd87c;
+  transition: all 50ms;
 }
 
 .small-newsletter-button:hover{

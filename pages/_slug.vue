@@ -18,7 +18,7 @@
                   <div class="share-on-facebook">Spodobał Ci się ten post? <span class="smile">😊</span><a v-bind:href="'https://www.facebook.com/sharer/sharer.php?u=dziecimamy.com/'+routeParam" target="_blank"><span class="fb-share"> Udostępnij go na Facebooku!</span></a></div>
                 </div>
                 <smallnewsletter v-bind:message="newsletterDescription" v-bind:visible="showSmallNewsletter"/>
-                <div class="disqus-container">
+                <div class="comments-container">
                   <div id="disqus_thread"></div>
                 </div>
               </article>
@@ -120,12 +120,14 @@ export default {
       this.showNewsletter();
     };
     const checkOffset = event => {
-        let offset = document.querySelector('.disqus-container').offsetTop - window.innerHeight + 250;
+        let offset = document.querySelector('.comments-container').offsetTop - window.innerHeight + 250;
         if (window.pageYOffset > offset && this.newsletterDescription){
           stopChecking();
         };
     };
-    document.addEventListener('scroll', checkOffset)
+    if(document.querySelector('.comments-container')){
+      document.addEventListener('scroll', checkOffset)
+    };
 
     this.sendCatId();
     this.loaded = true;
@@ -157,6 +159,12 @@ export default {
 .fadeout{
   opacity: 0;
   transition: 100ms opacity;
+}
+
+.comments-container{
+  width: 100%;
+  min-height: 1px;
+  height: auto;
 }
 
 .blog-article{
