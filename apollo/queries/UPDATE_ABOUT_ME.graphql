@@ -1,6 +1,6 @@
 mutation UpdateAboutME($aboutMe: String!){
   updatePageContent(
-    id: "cjfjxdvqjbayg01725pw1onbb"
+    id: "cjgz4rliq2kpa0143e5xaot5y"
     aboutMe: $aboutMe
   ) {
     id

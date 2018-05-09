@@ -1,4 +1,4 @@
-<template>
+<template ref="articleComponent">
   <div>
     <smallmenu v-bind:smallMenu="smallMenu" />
     <div v-bind:class="{fadeout: switchPost}">
@@ -40,7 +40,22 @@ import searchpage from '@/components/searchpage.vue'
 import smallnewsletter from '@/components/smallnewsletter.vue'
 import smallmenu from '@/components/smallmenu.vue'
 
+
 export default {
+  head() {
+    return {
+      title: this.Blogpost.title,
+      meta: [
+        {name: 'description', content:this.Blogpost.snippet},
+        {property: 'og:image', content: ''},
+        {property: 'og:image:height', content: '339'},
+        {property: 'og:image:width', content: '648'},
+        {property: 'og:description', content: 'Blog o wychowaniu, pomoc dla rodzic&oacute;w, jak radzić sobie z trudnymi zachowaniami dzieci, nastolatk&oacute;w'},
+        {property: 'og:title', content: this.Blogpost.title},
+        {property: 'og:url', content: 'www.dziecimamy.com'}
+      ],
+    }
+  },
   data () {
     return {
       routeParam: this.$route.params.slug,
@@ -94,6 +109,16 @@ export default {
     },
     showNewsletter(){
       this.showSmallNewsletter = true;
+    },
+    checkOffset(event){
+        let offset = document.querySelector('.comments-container').offsetTop - window.innerHeight + 250;
+        if (window.pageYOffset > offset){
+          this.stopChecking();
+          this.showNewsletter()
+        };
+    },
+    stopChecking(){
+      document.removeEventListener('scroll', this.checkOffset);
     }
   },
   watch: {
@@ -111,35 +136,28 @@ export default {
       return this.$store.getters.getSearchPhrase
     }
   },
+  beforeDestroy(){
+    this.stopChecking()
+  },
   created(){
     this.getNewsletterMessage();
   },
   mounted(){
-    const stopChecking = () => {
-      document.removeEventListener('scroll', checkOffset);
-      this.showNewsletter();
-    };
-    const checkOffset = event => {
-        let offset = document.querySelector('.comments-container').offsetTop - window.innerHeight + 250;
-        if (window.pageYOffset > offset && this.newsletterDescription){
-          stopChecking();
-        };
-    };
     if(document.querySelector('.comments-container')){
-      document.addEventListener('scroll', checkOffset)
+      document.addEventListener('scroll', this.checkOffset)
     };
 
     this.sendCatId();
     this.loaded = true;
 
     var disqus_config = function () {
-      this.page.url = `http://localhost:3000/${this.Blogpost.slug}`;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = `https://dziecimamy.com/${this.Blogpost.slug}`;  // Replace PAGE_URL with your page's canonical URL variable
       this.page.identifier = this.Blogpost.id; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 
     (function() {
       var d = document, s = d.createElement('script');
-      s.src = 'https://dzikapapryka-2.disqus.com/embed.js';
+      s.src = 'https://dziecimamy.disqus.com/embed.js';
       s.setAttribute('data-timestamp', +new Date());
       (d.head || d.body).appendChild(s);
     })();

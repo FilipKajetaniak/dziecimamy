@@ -93,11 +93,11 @@ export default {
 }
 .portrait{
     width: 100%;
-    height: 300px;
+    height: 400px;
     text-align: center;
 }
 .portrait > img{
-    height: 300px;
+    height: 400px;
     width: auto;
 }
 

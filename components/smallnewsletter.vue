@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'small-newsletter': true, 'small-newsletter-visible': visible,}">
+  <div :class="{'small-newsletter': true, 'small-newsletter-visible': visible}">
     <form action="" class="small-newsletter-form">
       <h2>{{message}}</h2>
       <input class="small-newsletter-input" type="text" placeholder="Jak masz na imie?">
@@ -10,7 +10,17 @@
 </template>
 <script>
 export default {
-  props: ['message', 'visible']
+  props: ['message', 'visible'],
+  data () {
+    return {
+      showNewsletter: false
+    }
+  },
+  methods: {
+    showComponent(){
+        
+    }
+  }
 }
 </script>
 <style>

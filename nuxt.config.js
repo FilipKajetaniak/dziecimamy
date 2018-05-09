@@ -11,13 +11,23 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'og:description', name: 'og:description', content: 'Blog o wychowaniu, pomoc dla rodziców, jak radzić sobie z trudnymi zachowaniami dzieci, nastolatków' },
-      { hid: 'description', name: 'description', content: 'Blog o wychowaniu, pomoc dla rodziców, jak radzić sobie z trudnymi zachowaniami dzieci, nastolatków' }
+      { hid: 'description', name: 'description', content: 'Blog o wychowaniu, pomoc dla rodziców, jak radzić sobie z trudnymi zachowaniami dzieci, nastolatków' },
+      {property: 'og:image', content: 'https://2.bp.blogspot.com/-HzO0m97SOB4/WeX0zM1t8fI/AAAAAAAABMY/Hs9oS5GlIZ0u9-iUwx_2-zF_xZCPdVxbQCLcBGAs/s640/juliette-leufke-154599.jpg'},
+      {property: 'og:image:height', content: '339'},
+      {property: 'og:image:width', content: '648'},
+      {property: 'og:description', content: 'Blog o wychowaniu, pomoc dla rodzic&oacute;w, jak radzić sobie z trudnymi zachowaniami dzieci, nastolatk&oacute;w'},
+      {property: 'og:title', content: 'Dziecimamy'},
+      {property: 'og:url', content: 'www.dziecimamy.com'}
     ],
     script: [
-      {src: '//dzikapapryka-2.disqus.com/count.js', id: 'dsq-count-scr', async: true}
+      {src: '//dziecimamy.disqus.com/count.js', id: 'dsq-count-scr', async: true}
     ],
     link: [
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png'},
+      { rel: 'icon', type:'image/png', sizes: '32x32', href: '/favicon-32x32.png'},
+      { rel: 'icon', type:'image/png', sizes: '16x16', href: '/favicon-16x16.png'},
+      { rel: 'manifest', href: '/site.webmanifest'},
+      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5'},
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet',  href: 'https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i' },
       { rel: 'stylesheet',  href: 'https://fonts.googleapis.com/css?family=Nunito:400,700,800' }
@@ -53,7 +63,7 @@ module.exports = {
   modules: ['@nuxtjs/apollo','@nuxtjs/google-analytics'],
 
   'google-analytics': {
-    id: 'XXXXXXXX'
+    id: 'UA-118934036-1'
   },
 
 

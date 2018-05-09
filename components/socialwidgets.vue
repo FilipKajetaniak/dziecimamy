@@ -38,7 +38,7 @@ import GET_INSTA_USER from '@/apollo/queries/GET_INSTA_USER.graphql'
 export default {
     data () {
         return {
-            pics: ['https://resources.wimpmusic.com/images/06924b58/f3df/45c9/8eb4/85d3d28ee7f5/320x320.jpg'],
+            pics: ['https://dziecimamy.com/public/img/small-image.8dfe3b9.png'],
             shift: 0,
             padding: 0,
             description: false,
