@@ -63,7 +63,7 @@ module.exports = {
   modules: ['@nuxtjs/apollo','@nuxtjs/google-analytics'],
 
   'google-analytics': {
-    id: 'UA-118934036-1'
+    id: 'UA-118954191-1'
   },
 
 
