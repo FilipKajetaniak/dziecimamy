@@ -1,6 +1,8 @@
 # dziecimamy
 SEO friendly SPA blog
 
+You can check it out live [here](https://dziecimamy.com/).
+
 Everyone has access to this project's database so please be aware, that
 **I'm not responsible for content displayed on the website!**
 
